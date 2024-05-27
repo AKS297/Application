@@ -2,6 +2,9 @@ package com.blog.application.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "catagory" )
 public class Catagory {
@@ -16,6 +19,18 @@ public class Catagory {
 
     @Column(name = "catogory_desc")
     private String catagoryDescription;
+
+    public List<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(List<Post> post) {
+        this.post = post;
+    }
+
+    @OneToMany(mappedBy = "catagory",cascade = CascadeType.ALL)
+    @JoinColumn(name = "post")
+    private List<Post> post = new ArrayList<>();
 
     public long getId() {
         return id;

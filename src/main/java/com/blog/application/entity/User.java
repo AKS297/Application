@@ -3,6 +3,9 @@ package com.blog.application.entity;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Entity
 @Table(name="user")
@@ -23,6 +26,18 @@ public class User {
 
     @Column(name = "about_user")
     private String about;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_post")
+    private List<Post> posts = new ArrayList<>();
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     public long getId() {
         return id;
