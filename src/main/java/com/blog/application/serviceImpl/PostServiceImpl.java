@@ -44,7 +44,7 @@ public class PostServiceImpl implements PostService {
         post.setUser(user);
         post.setCatagory(catagory);
         Post savePost = postRepo.save(post);
-        return modelMapper.map(savePost,PostDto.class)
+        return modelMapper.map(savePost,PostDto.class);
     }
 
     @Override
