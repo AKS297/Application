@@ -29,7 +29,6 @@ public class Catagory {
     }
 
     @OneToMany(mappedBy = "catagory",cascade = CascadeType.ALL)
-    @JoinColumn(name = "post")
     private List<Post> post = new ArrayList<>();
 
     public long getId() {

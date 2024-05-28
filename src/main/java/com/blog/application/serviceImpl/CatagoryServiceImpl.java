@@ -7,11 +7,12 @@ import com.blog.application.repository.CatagoryRepo;
 import com.blog.application.service.CatagoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class CatagoryServiceImpl implements CatagoryService {
 
     @Autowired
@@ -31,7 +32,7 @@ public class CatagoryServiceImpl implements CatagoryService {
     public CatagoryDto updateCatagory(CatagoryDto catagoryDto, long id) {
        Catagory findCatagory = catagoryRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("catagoryTofind","id",id));
             findCatagory.setCatagoryName(catagoryDto.getCatagoryName());
-            findCatagory.setCatagoryDescription(catagoryDto.getCategoryDescription());
+            findCatagory.setCatagoryDescription(catagoryDto.getCatagoryDescription());
             catagoryRepo.save(findCatagory);
        return modelMapper.map(findCatagory,CatagoryDto.class);
     }

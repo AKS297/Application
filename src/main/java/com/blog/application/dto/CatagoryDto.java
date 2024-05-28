@@ -3,7 +3,7 @@ package com.blog.application.dto;
 public class CatagoryDto {
     private long id;
     private String catagoryName;
-    private String categoryDescription;
+    private String catagoryDescription;
 
     public long getId() {
         return id;
@@ -21,11 +21,11 @@ public class CatagoryDto {
         this.catagoryName = catagoryName;
     }
 
-    public String getCategoryDescription() {
-        return categoryDescription;
+    public String getCatagoryDescription() {
+        return catagoryDescription;
     }
 
-    public void setCategoryDescription(String categoryDescription) {
-        this.categoryDescription = categoryDescription;
+    public void setCatagoryDescription(String catagoryDescription) {
+        this.catagoryDescription = catagoryDescription;
     }
 }

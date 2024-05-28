@@ -12,7 +12,10 @@ public class PostDto {
     private String imageName;
     private Date date;
 
-    private User user;
+    private UserDto user;
+
+    private CatagoryDto catagory;
+
 
     public String getImageName() {
         return imageName;
@@ -30,26 +33,6 @@ public class PostDto {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Catagory getCatagory() {
-        return catagory;
-    }
-
-    public void setCatagory(Catagory catagory) {
-        this.catagory = catagory;
-    }
-
-    private Catagory catagory;
-
-
-
     public String getTitle() {
         return title;
     }
@@ -64,5 +47,21 @@ public class PostDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
+    }
+
+    public CatagoryDto getCatagory() {
+        return catagory;
+    }
+
+    public void setCatagory(CatagoryDto catagory) {
+        this.catagory = catagory;
     }
 }

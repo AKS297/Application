@@ -28,7 +28,6 @@ public class User {
     private String about;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_post")
     private List<Post> posts = new ArrayList<>();
 
     public List<Post> getPosts() {
