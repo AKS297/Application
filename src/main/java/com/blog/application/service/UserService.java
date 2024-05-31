@@ -1,5 +1,6 @@
 package com.blog.application.service;
 
+import com.blog.application.dto.LogInDto;
 import com.blog.application.dto.UserDto;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,6 @@ public interface UserService {
    List<UserDto> getAllUsers();
 
    void deleteUser(long id);
+   String logInUser(LogInDto userDetails);
 
 }

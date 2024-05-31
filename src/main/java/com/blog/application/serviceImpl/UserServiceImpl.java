@@ -1,5 +1,6 @@
 package com.blog.application.serviceImpl;
 
+import com.blog.application.dto.LogInDto;
 import com.blog.application.dto.UserDto;
 import com.blog.application.entity.User;
 import com.blog.application.exception.ResourceNotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,11 +19,31 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EncryptionService encryptionService;
+
+    @Autowired
+    private JwtAuthenticationService jwtService;
+
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = this.dtoToUser(userDto);
+        user.setPassword(encryptionService.encryptPassword(userDto.getPassword()));
         User saveUser = userRepository.save(user);
         return this.UserToDto(saveUser);
+    }
+
+    @Override
+    public String logInUser(LogInDto userDetails){
+    Optional<User> user = userRepository.findByUserName(userDetails.getUserName());
+    if(user.isPresent()){
+        User user1 = user.get();
+       if(encryptionService.verifyPassword(userDetails.getPassword(),user1.getPassword())){
+         return jwtService.generateJwtToken(user1);
+       }
+      }
+       return null;
     }
 
     @Override
