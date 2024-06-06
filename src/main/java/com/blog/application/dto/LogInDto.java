@@ -2,7 +2,7 @@ package com.blog.application.dto;
 
 public class LogInDto {
     private String userName;
-    private String password;
+    private String passWord;
 
     public String getUserName() {
         return userName;
@@ -12,11 +12,11 @@ public class LogInDto {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 }

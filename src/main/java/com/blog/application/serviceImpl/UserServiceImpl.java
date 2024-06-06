@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     Optional<User> user = userRepository.findByUserName(userDetails.getUserName());
     if(user.isPresent()){
         User user1 = user.get();
-       if(encryptionService.verifyPassword(userDetails.getPassword(),user1.getPassword())){
+       if(encryptionService.verifyPassword(userDetails.getPassWord(),user1.getPassword())){
          return jwtService.generateJwtToken(user1);
        }
       }
