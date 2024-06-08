@@ -3,22 +3,26 @@ package com.blog.application.controller;
 
 import com.blog.application.dto.LogInDto;
 import com.blog.application.dto.LogInResponse;
+import com.blog.application.dto.UserDto;
+import com.blog.application.entity.User;
 import com.blog.application.service.UserService;
 import com.blog.application.serviceImpl.UserServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/")
 public class AuthenticationController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping("/logIn")
     public ResponseEntity<LogInResponse> loginUser(@RequestBody LogInDto logInDto){
@@ -32,5 +36,12 @@ public class AuthenticationController {
       }
 
     }
+
+    @GetMapping("/loggedInUser")
+     public UserDto getLoggedInUserDetails(@AuthenticationPrincipal User user){
+        return modelMapper.map(user,UserDto.class);
+
+     }
+
 
 }
