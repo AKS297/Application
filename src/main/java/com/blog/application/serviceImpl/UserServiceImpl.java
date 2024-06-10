@@ -9,7 +9,6 @@ import com.blog.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,6 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String logInUser(LogInDto userDetails){
+
     Optional<User> user = userRepository.findByUserName(userDetails.getUserName());
     if(user.isPresent()){
         User user1 = user.get();
