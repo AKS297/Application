@@ -4,6 +4,8 @@ package com.blog.application.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -27,6 +29,9 @@ public class Post {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments = new HashSet<>();
 
     public long getId() {
         return id;
