@@ -1,5 +1,7 @@
 package com.blog.application.dto;
 
+import com.blog.application.entity.Post;
+
 public class CommentDto {
 
     private long id;

@@ -30,4 +30,10 @@ public class CommentServiceImpl implements CommentService {
         commentRepo.save(addcomment);
         return modelMapper.map(addcomment,CommentDto.class);
     }
+
+    @Override
+    public void deleteComment(long id) {
+      Comment comment =  commentRepo.findById(id).orElseThrow();
+        commentRepo.delete(comment);
+    }
 }

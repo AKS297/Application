@@ -19,9 +19,10 @@ public class AppSecurityConfig {
         http.addFilterBefore(jwtRequestFilter, AuthorizationFilter.class);
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/api/logIn","/api/loggedInUser").permitAll()
+
+            //    .requestMatchers("/api/logIn","/api/loggedInUser").permitAll()
                 .anyRequest()
-                .authenticated();
+                .permitAll();
 
         return http.build();
     }
