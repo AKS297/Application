@@ -78,6 +78,9 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<finalName>application</finalName>
+
 	</build>
 
 </project>
